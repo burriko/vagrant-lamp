@@ -111,3 +111,12 @@ end
 magic_shell_environment 'APPLICATION_ENVIRONMENT' do
   value 'development'
 end
+
+# Take control of apache's php.ini
+template "/etc/php5/apache2/php.ini" do
+    source "php.ini.erb"
+    owner "root"
+    group "root"
+    mode 0644
+    notifies :restart, "service[apache2]", :immediately
+end
