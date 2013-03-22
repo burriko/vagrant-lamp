@@ -37,7 +37,7 @@ sites.each do |name|
     server_name site["host"]
     server_aliases site["aliases"]
     docroot "/vagrant/public/#{site["host"]}"
-  end  
+  end
 
    # Add site info in /etc/hosts
    bash "hosts" do
@@ -47,7 +47,7 @@ end
 
 # Disable default site
 apache_site "default" do
-  enable false  
+  enable false
 end
 
 # Install phpmyadmin
@@ -106,4 +106,8 @@ template "#{node['php']['ext_conf_dir']}/mailcatcher.ini" do
   mode "0644"
   action :create
   notifies :restart, resources("service[apache2]"), :delayed
+end
+
+magic_shell_environment 'APPLICATION_ENVIRONMENT' do
+  value 'development'
 end
