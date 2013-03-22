@@ -9,6 +9,10 @@ Vagrant::Config.run do |config|
   # Assign this VM to a host-only network IP, allowing you to access it via the IP.
   config.vm.network :hostonly, "33.33.33.10"
 
+  config.vm.forward_port 80, 8080
+
+  config.vm.share_folder "careers", "/vagrant/public/local.dev/careers", "E:\\Dropbox\\NclWork\\www\\careers"
+
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
   # to this Vagrantfile), and adding some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|
