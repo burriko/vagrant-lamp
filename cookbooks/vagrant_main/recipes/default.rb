@@ -150,12 +150,17 @@ mysql_connection_info = {
   :password => node['mysql']['server_root_password']
 }
 
-# create the mysql database
+# create the mysql databases
 mysql_database 'ncareern' do
   connection mysql_connection_info
   action :create
 end
+mysql_database 'ncareern_test' do
+  connection mysql_connection_info
+  action :create
+end
 
+# create mysql user
 mysql_database_user 'careers' do
   connection mysql_connection_info
   password 'careers'
