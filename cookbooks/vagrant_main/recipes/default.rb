@@ -1,12 +1,13 @@
-require_recipe "apt"
-require_recipe "git"
-require_recipe "oh-my-zsh"
-require_recipe "apache2"
-require_recipe "apache2::mod_rewrite"
-require_recipe "apache2::mod_ssl"
-require_recipe "mysql::server"
-require_recipe "php"
-require_recipe "apache2::mod_php5"
+include_recipe "apt"
+include_recipe "git"
+include_recipe "oh-my-zsh"
+include_recipe "apache2"
+include_recipe "apache2::mod_rewrite"
+include_recipe "apache2::mod_ssl"
+include_recipe "mysql::server"
+include_recipe "php"
+include_recipe "apache2::mod_php5"
+include_recipe "database::mysql"
 
 # Install packages
 %w{ debconf vim screen mc subversion curl tmux make g++ libsqlite3-dev }.each do |a_package|
@@ -140,4 +141,30 @@ template "/etc/php5/apache2/php.ini" do
     group "root"
     mode 0644
     notifies :restart, "service[apache2]", :immediately
+end
+
+
+mysql_connection_info = {
+  :host => "localhost",
+  :username => 'root',
+  :password => node['mysql']['server_root_password']
+}
+
+# create the mysql database
+mysql_database 'ncareern' do
+  connection mysql_connection_info
+  action :create
+end
+
+mysql_database_user 'careers' do
+  connection mysql_connection_info
+  password 'careers'
+  action :create
+end
+
+# grant all privileges on all databases/tables from localhost
+mysql_database_user 'careers' do
+  connection mysql_connection_info
+  password 'careers'
+  action :grant
 end

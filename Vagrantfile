@@ -22,7 +22,9 @@ Vagrant::Config.run do |config|
 
     chef.json.merge!({
       "mysql" => {
-        "server_root_password" => "vagrant"
+        "server_root_password" => "vagrant",
+        "server_debian_password" => "vagrant",
+        "server_repl_password" => "vagrant"
       },
       "oh_my_zsh" => {
         :users => [
