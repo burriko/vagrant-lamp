@@ -112,6 +112,27 @@ magic_shell_environment 'APPLICATION_ENVIRONMENT' do
   value 'development'
 end
 
+# Install PHPUnit
+php_pear_channel "pear.phpunit.de" do
+  action :discover
+end
+php_pear_channel "pear.symfony.com" do
+  action :discover
+end
+php_pear "PHPUnit" do
+  channel "phpunit"
+  action :install
+end
+
+# Install Phing
+php_pear_channel "pear.phing.info" do
+  action :discover
+end
+php_pear "phing" do
+  channel "phing"
+  action :install
+end
+
 # Take control of apache's php.ini
 template "/etc/php5/apache2/php.ini" do
     source "php.ini.erb"
