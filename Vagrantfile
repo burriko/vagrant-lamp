@@ -11,7 +11,7 @@ Vagrant::Config.run do |config|
 
   config.vm.forward_port 80, 8080
 
-  config.vm.share_folder "careers", "/vagrant/public/local.dev/careers", "E:\\Dropbox\\NclWork\\www\\careers"
+  config.vm.share_folder "careers", "/vagrant/public/local.dev", "E:\\Dropbox\\NclWork\\www"
   config.vm.share_folder "db_dumps", "/vagrant/db_dumps", "E:\\db dumps"
 
   # Enable provisioning with chef solo, specifying a cookbooks path (relative
