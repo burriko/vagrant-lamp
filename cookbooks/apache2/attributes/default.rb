@@ -118,18 +118,18 @@ default['apache']['traceenable'] = "On"
 # mod_auth_openids
 default['apache']['allowed_openids'] = Array.new
 
-# mod_status Allow list, space seprated list of allowed entries.  
+# mod_status Allow list, space seprated list of allowed entries.
 default['apache']['status_allow_list'] = "localhost ip6-localhost"
 
 # mod_status ExtendedStatus, set to 'true' to enable
 default['apache']['ext_status'] = false
 
 # Prefork Attributes
-default['apache']['prefork']['startservers'] = 16
-default['apache']['prefork']['minspareservers'] = 16
-default['apache']['prefork']['maxspareservers'] = 32
-default['apache']['prefork']['serverlimit'] = 400
-default['apache']['prefork']['maxclients'] = 400
+default['apache']['prefork']['startservers'] = 4
+default['apache']['prefork']['minspareservers'] = 4
+default['apache']['prefork']['maxspareservers'] = 8
+default['apache']['prefork']['serverlimit'] = 8
+default['apache']['prefork']['maxclients'] = 8
 default['apache']['prefork']['maxrequestsperchild'] = 10000
 
 # Worker Attributes
