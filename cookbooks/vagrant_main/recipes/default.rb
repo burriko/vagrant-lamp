@@ -93,6 +93,11 @@ package "php5-curl" do
   action :install
 end
 
+# Install php-pspell
+package "php5-pspell" do
+  action :install
+end
+
 # Get eth1 ip
 eth1_ip = node[:network][:interfaces][:eth1][:addresses].select{|key,val| val[:family] == 'inet'}.flatten[0]
 
