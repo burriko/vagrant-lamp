@@ -10,7 +10,7 @@ include_recipe "apache2::mod_php5"
 include_recipe "database::mysql"
 
 # Install packages
-%w{ debconf vim screen mc subversion curl tmux make g++ libsqlite3-dev }.each do |a_package|
+%w{ debconf vim subversion curl tmux make g++ libsqlite3-dev }.each do |a_package|
   package a_package
 end
 
