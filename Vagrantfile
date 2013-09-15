@@ -36,6 +36,9 @@ Vagrant::Config.run do |config|
             :plugins => ['git', 'gem']
           }
         ]
+      },
+      "node" => {
+        "revision" => "v0.10.18"
       }
     })
   end

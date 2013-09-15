@@ -8,6 +8,8 @@ include_recipe "mysql::server"
 include_recipe "php"
 include_recipe "apache2::mod_php5"
 include_recipe "database::mysql"
+include_recipe "nodejs::install_from_binary"
+include_recipe "nodejs::npm"
 
 # Install packages
 %w{ debconf vim subversion curl tmux make g++ libsqlite3-dev }.each do |a_package|
@@ -15,8 +17,13 @@ include_recipe "database::mysql"
 end
 
 # Install ruby gems
-%w{ rake mailcatcher }.each do |a_gem|
+%w{ rake mailcatcher compass }.each do |a_gem|
   gem_package a_gem
+end
+
+# Install node packages
+%w{ yo generator-ember }.each do |a_node_package|
+  npm_package a_node_package
 end
 
 # Generate selfsigned ssl
