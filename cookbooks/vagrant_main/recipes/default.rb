@@ -22,7 +22,7 @@ end
 end
 
 # Install node packages
-%w{ yo generator-ember }.each do |a_node_package|
+%w{ yo generator-ember phantomjs@v1.9.1-9 }.each do |a_node_package|
   npm_package a_node_package
 end
 
