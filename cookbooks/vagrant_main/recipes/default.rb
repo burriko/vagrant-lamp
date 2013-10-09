@@ -26,6 +26,15 @@ end
   npm_package a_node_package
 end
 
+cookbook_file "/etc/init/phantomjs.conf" do
+  source "phantomjs.conf"
+end
+
+execute "start_phantomjs" do
+  command "start phantomjs"
+  ignore_failure true
+end
+
 # Generate selfsigned ssl
 execute "make-ssl-cert" do
   command "make-ssl-cert generate-default-snakeoil --force-overwrite"
